@@ -1,18 +1,42 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+    <v-container>
+        <v-row>
+            <v-col
+                cols="12"
+                sm="6"
+                md="4"
+                v-for="event in event.events"
+                :key="event.id"
+            >
+                <Card :url="randomImage" :event="event" />
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Card from '@/components/Card.vue';
+import { mapState } from 'vuex';
 
 export default {
-  name: "Home",
-  components: {
-    HelloWorld
-  }
+    components: {
+        Card,
+    },
+
+    created() {
+        this.$store.dispatch('fetchEvents').then(() => {
+            console.log('fetched');
+        });
+    },
+
+    computed: mapState(['event']),
+
+    methods: {
+        randomImage() {
+            return `https://picsum.photos/id/${(Math.random() * 100) | 0}/500`;
+        },
+    },
 };
 </script>
+
+<style></style>
