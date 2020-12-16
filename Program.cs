@@ -17,7 +17,7 @@ namespace diagramme_classe
             p.AddCotoye(new Citoyen("45127"));
 
 
-            Console.WriteLine(p.listBeenInContactWith.Count) ;
+            Console.WriteLine(p.listBeenInContactWith.Count);
             
 
             Console.ReadKey();
