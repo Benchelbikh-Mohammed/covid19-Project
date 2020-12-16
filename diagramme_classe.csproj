@@ -15,7 +15,7 @@
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>diagramme_classe</RootNamespace>
     <StartupObject />
     <FileUpgradeFlags>
@@ -109,6 +109,7 @@
     <Compile Include="Patient.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="ServiceHopital.cs">
       <SubType>Code</SubType>
     </Compile>

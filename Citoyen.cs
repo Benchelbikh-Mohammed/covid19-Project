@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public enum Color
 {
@@ -9,63 +11,73 @@ public enum Color
     gray
 }
 
-public abstract class Citoyen
+public class Citoyen
 {
-   public virtual void SetCodeCouleur()
+
+    public Citoyen(string cin) {
+
+        listBeenInContactWith = new List<Citoyen>();
+        _cin = cin; 
+    }
+
+
+    public virtual void SetCodeCouleur()
     {
 
     }
 
-   public System.Collections.ArrayList citoyenB;
-   
-   /// <pdGenerated>default getter</pdGenerated>
-   public System.Collections.ArrayList GetCitoyenB()
+   public List<Citoyen> listBeenInContactWith;
+    
+   public void SetCitoyenB(List<Citoyen> newCitoyenB)
    {
-      if (citoyenB == null)
-         citoyenB = new System.Collections.ArrayList();
-      return citoyenB;
-   }
-   
-   /// <pdGenerated>default setter</pdGenerated>
-   public void SetCitoyenB(System.Collections.ArrayList newCitoyenB)
-   {
-      RemoveAllCitoyenB();
+      RemoveAllBeenInContactWith();
       foreach (Citoyen oCitoyen in newCitoyenB)
-         AddCitoyenB(oCitoyen);
+         AddCotoye(oCitoyen);
    }
-   
-   /// <pdGenerated>default Add</pdGenerated>
-   public void AddCitoyenB(Citoyen newCitoyen)
+
+   public void AddCotoye(Citoyen newCitoyen)
    {
       if (newCitoyen == null)
          return;
-      if (this.citoyenB == null)
-         this.citoyenB = new System.Collections.ArrayList();
-      if (!this.citoyenB.Contains(newCitoyen))
-         this.citoyenB.Add(newCitoyen);
+
+      if (listBeenInContactWith == null)
+         listBeenInContactWith = new List<Citoyen>();
+
+      if (!listBeenInContactWith.Contains(newCitoyen))
+         listBeenInContactWith.Add(newCitoyen);
    }
    
-   /// <pdGenerated>default Remove</pdGenerated>
-   public void RemoveCitoyenB(Citoyen oldCitoyen)
+   public void RemoveBeenInContact(Citoyen oldCitoyen)
    {
       if (oldCitoyen == null)
          return;
-      if (this.citoyenB != null)
-         if (this.citoyenB.Contains(oldCitoyen))
-            this.citoyenB.Remove(oldCitoyen);
+      if (listBeenInContactWith != null)
+         if (listBeenInContactWith.Contains(oldCitoyen))
+            listBeenInContactWith.Remove(oldCitoyen);
    }
    
-   /// <pdGenerated>default removeAll</pdGenerated>
-   public void RemoveAllCitoyenB()
+   public void RemoveAllBeenInContactWith()
    {
-      if (citoyenB != null)
-         citoyenB.Clear();
+      if (listBeenInContactWith != null)
+         listBeenInContactWith.Clear();
    }
 
-   protected string Cin;
-   protected Color CodeCouleur;
+   private string _cin;
+   public string cin { get => _cin; }
+   private Color _codeCouleur;
+    
+   public Color codeCouleur { 
+        get => _codeCouleur; 
+        set {
+            if (value.GetType() != typeof(Color)) return;
 
-   private bool EstVaccine;
-   private bool EnQuarantaine;
+            _codeCouleur = value;
+        } 
+   }
+
+   
+
+   private bool estVaccine;
+   private bool enQuarantaine;
 
 }

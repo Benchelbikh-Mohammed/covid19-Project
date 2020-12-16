@@ -1,0 +1,6 @@
+C:\Users\HP\source\coronavirus_cases_tracker_code\bin\Debug\diagramme_classe.pdb
+C:\Users\HP\source\coronavirus_cases_tracker_code\obj\Debug\diagramme_classe.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\coronavirus_cases_tracker_code\obj\Debug\diagramme_classe.pdb
+C:\Users\HP\source\coronavirus_cases_tracker_code\bin\Debug\diagramme_classe.exe
+C:\Users\HP\source\coronavirus_cases_tracker_code\obj\Debug\diagramme_classe.exe
+C:\Users\HP\source\coronavirus_cases_tracker_code\obj\Debug\diagramme_classe.csprojAssemblyReference.cache
