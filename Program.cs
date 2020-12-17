@@ -13,21 +13,18 @@ namespace diagramme_classe
         {
             Citoyen c = new Citoyen("D871624");
 
-            Patient p = new Patient(c);
+            Citoyen c1 = new Citoyen("D77921");
+            Citoyen c2 = new Citoyen("890766");
 
-            Console.WriteLine(p.cin);
-            Console.WriteLine(p.codeCouleur);
-            
-            //p.codeCouleur = Color.green;
-
-            //c.codeCouleur = Color.green;
-
-            //Console.WriteLine(p.codeCouleur == c.codeCouleur);
+            c2.AddCotoye(c);
 
 
-            //Console.WriteLine(c.GetType());
-            //Citoyen c1 = new Citoyen("45127");
-            
+            c.AddCotoye(c1);
+
+            foreach (var cinn in Citoyen.citoyenGraph.DFSRecursive(c1.cin) )
+            {
+                Console.WriteLine(cinn);
+            }
             
             
 

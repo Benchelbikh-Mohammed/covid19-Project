@@ -103,6 +103,7 @@
     <Compile Include="FoyerContamination.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Graph.cs" />
     <Compile Include="Patient.cs">
       <SubType>Code</SubType>
     </Compile>

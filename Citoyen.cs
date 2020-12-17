@@ -16,13 +16,12 @@ public enum Color
 public class Citoyen
 {
 
-    static Graph CitoyenCotoiment = new Graph();
+    public static Graph citoyenGraph = new Graph();
 
 
 
     public Citoyen(string cin) {
-
-        listBeenInContactWith = new List<Citoyen>();
+        citoyenGraph.AddVertex(cin);
         _cin = cin;
         codeCouleur = Color.green;
         estVaccine = false;
@@ -31,6 +30,7 @@ public class Citoyen
 
     public Citoyen(Citoyen c)
     {
+        citoyenGraph.AddVertex(c.cin);
         cin = c.cin;
         codeCouleur = c.codeCouleur;
         estVaccine = c.estVaccine;
@@ -43,12 +43,8 @@ public class Citoyen
     //}
 
 
-    public virtual void SetCodeCouleur()
-    {
 
-    }
-
-   public List<Citoyen> listBeenInContactWith;
+   
     
    public void SetCitoyenB(List<Citoyen> newCitoyenB)
    {
@@ -62,9 +58,7 @@ public class Citoyen
         if (newCitoyen == null)
             return;
 
-        if (!listBeenInContactWith.Contains(newCitoyen))
-         listBeenInContactWith.Add(newCitoyen);
-
+        citoyenGraph.AddAnEdge(cin, newCitoyen.cin);
 
    }
    
@@ -72,15 +66,13 @@ public class Citoyen
    {
       if (oldCitoyen == null)
          return;
-      if (listBeenInContactWith != null)
-         if (listBeenInContactWith.Contains(oldCitoyen))
-            listBeenInContactWith.Remove(oldCitoyen);
+
+        citoyenGraph.RemoveAnEdge(cin, oldCitoyen.cin);
    }
    
    public void RemoveAllBeenInContactWith()
    {
-      if (listBeenInContactWith != null)
-         listBeenInContactWith.Clear();
+        citoyenGraph.AdjacencyList.Find(v => v.Name == cin).Edges.Clear(); 
    }
 
    private string _cin;
