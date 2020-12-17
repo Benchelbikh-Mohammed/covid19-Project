@@ -14,10 +14,23 @@ namespace diagramme_classe
             Citoyen c = new Citoyen("D871624");
 
             Patient p = new Patient(c);
-            p.AddCotoye(new Citoyen("45127"));
+
+            Console.WriteLine(p.cin);
+            Console.WriteLine(p.codeCouleur);
+            
+            //p.codeCouleur = Color.green;
+
+            //c.codeCouleur = Color.green;
+
+            //Console.WriteLine(p.codeCouleur == c.codeCouleur);
 
 
-            Console.WriteLine(p.listBeenInContactWith.Count);
+            //Console.WriteLine(c.GetType());
+            //Citoyen c1 = new Citoyen("45127");
+            
+            
+            
+
             
 
             Console.ReadKey();
