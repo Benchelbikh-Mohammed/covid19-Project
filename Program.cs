@@ -17,18 +17,36 @@ namespace diagramme_classe
             Citoyen c2 = new Citoyen("890766");
 
             c2.AddCotoye(c);
-
-
             c.AddCotoye(c1);
 
-            foreach (var cinn in Citoyen.citoyenGraph.DFSRecursive(c1.cin) )
-            {
-                Console.WriteLine(cinn);
-            }
-            
-            
+            Console.WriteLine(c1.isSuspect);
+            Console.WriteLine(c2.isSuspect);
 
-            
+            Patient p = new Patient(c);
+
+            Console.WriteLine(c1.isSuspect);
+            Console.WriteLine(c2.isSuspect);
+
+
+            foreach (var cit in p.cotoye)
+            {
+                Console.WriteLine(cit.cin);
+
+            }
+
+            p.RemoveBeenInContact(c1);
+
+            Console.WriteLine("*****************************");
+
+            foreach (var cit in p.cotoye)
+            {
+                Console.WriteLine(cit.cin);
+
+            }
+
+
+
+
 
             Console.ReadKey();
         }
