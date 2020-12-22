@@ -16,33 +16,37 @@ namespace diagramme_classe
             Citoyen c1 = new Citoyen("D77921");
             Citoyen c2 = new Citoyen("890766");
 
-            c2.AddCotoye(c);
-            c.AddCotoye(c1);
+            //c2.AddCotoye(c);
+            //c.AddCotoye(c1);
 
-            Console.WriteLine(c1.isSuspect);
-            Console.WriteLine(c2.isSuspect);
+            //Console.WriteLine(c1.isSuspect);
+            //Console.WriteLine(c2.isSuspect);
 
-            Patient p = new Patient(c);
+            //Patient p = new Patient(c);
 
-            Console.WriteLine(c1.isSuspect);
-            Console.WriteLine(c2.isSuspect);
+            //Console.WriteLine(c1.isSuspect);
+            //Console.WriteLine(c2.isSuspect);
 
 
-            foreach (var cit in p.cotoye)
-            {
-                Console.WriteLine(cit.cin);
+            //foreach (var cit in p.cotoye)
+            //{
+            //    Console.WriteLine(cit.cin);
 
-            }
+            //}
 
-            p.RemoveBeenInContact(c1);
+            //p.RemoveBeenInContact(c1);
 
-            Console.WriteLine("*****************************");
+            //Console.WriteLine("*****************************");
 
-            foreach (var cit in p.cotoye)
-            {
-                Console.WriteLine(cit.cin);
+            //foreach (var cit in p.cotoye)
+            //{
+            //    Console.WriteLine(cit.cin);
 
-            }
+            //}
+
+            c.beenTo(new Location("Celio"));
+
+            c.printLocations();
 
 
 

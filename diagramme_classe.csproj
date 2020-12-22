@@ -100,10 +100,7 @@
     <Compile Include="Etat.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FoyerContamination.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graph.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Patient.cs">
       <SubType>Code</SubType>
     </Compile>
