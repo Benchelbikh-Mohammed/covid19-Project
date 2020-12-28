@@ -1,3 +1,4 @@
 # covid19-Project
 
-## next idea
+
+branch API-PERSISTANCE : ADO.net connection to local db  
