@@ -48,11 +48,7 @@ namespace diagramme_classe
 
             c.printLocations();
 
-
-
-
-
-            Console.ReadKey();
+            
         }
     
 
