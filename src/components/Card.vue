@@ -1,5 +1,8 @@
 <template>
-    <v-card max-width="344" class="mx-auto">
+    <v-card
+        :max-width="($vuetify.breakpoint.smAndUp && 'auto') || '100%'"
+        class="mx-auto"
+    >
         <v-list-item>
             <v-list-item-avatar color="grey"></v-list-item-avatar>
             <v-list-item-content>
@@ -12,7 +15,11 @@
             </v-list-item-content>
         </v-list-item>
 
-        <v-img :src="Url" lazy-src="@/assets/808080.png" height="194"
+        <v-img
+            :src="Url"
+            lazy-src="@/assets/808080.png"
+            height="194"
+            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             ><template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
                     <v-progress-circular
@@ -23,22 +30,37 @@
             </template>
         </v-img>
 
-        <v-card-text>
-            {{ event.description }}
-        </v-card-text>
+        <v-card-title>
+            {{ event.service }}
+        </v-card-title>
+
+        <v-card-subtitle>
+            N Salle ({{ event.salle_id }}) -{{ event.date }} @{{ event.time }}
+        </v-card-subtitle>
 
         <v-card-actions>
-            <v-btn text color="deep-purple accent-4">
-                participate
+            <v-btn color="indigo lighten-2" text>
+                Explore
             </v-btn>
-            <v-btn
-                text
-                color="deep-purple accent-4"
-                :to="{ name: 'event-show' }"
-            >
-                more details
+
+            <v-spacer></v-spacer>
+
+            <v-btn icon @click="show = !show">
+                <v-icon>{{
+                    show ? 'mdi-chevron-up' : 'mdi-chevron-down'
+                }}</v-icon>
             </v-btn>
         </v-card-actions>
+
+        <v-expand-transition>
+            <div v-show="show">
+                <v-divider></v-divider>
+
+                <v-card-text>
+                    {{ event.description }}
+                </v-card-text>
+            </div>
+        </v-expand-transition>
     </v-card>
 </template>
 
@@ -56,11 +78,10 @@ export default {
         },
     },
 
-    data() {
-        return {
-            Url: '',
-        };
-    },
+    data: () => ({
+        show: false,
+        Url: '',
+    }),
 
     created() {
         this.Url = this.url();

@@ -67,12 +67,8 @@ export default {
     },
     methods: {
         onResize() {
-            if (this.$vuetify.breakpoint.smAndUp) {
-                (this.outlined = false), (this.shaped = true);
-            } else {
-                this.outlined = true;
-                this.shaped = false;
-            }
+            this.shaped = this.$vuetify.breakpoint.smAndUp;
+            this.outlined = !this.shaped;
         },
 
         login() {

@@ -1,13 +1,54 @@
 <template>
     <v-app>
-        <v-app-bar v-if="$vuetify.breakpoint.smAndUp" app color="primary" dark>
+        <v-system-bar window>
+            <v-icon>mdi-message</v-icon>
+            <span>10 unread messages</span>
+            <v-spacer></v-spacer>
+            <v-icon>mdi-minus</v-icon>
+            <v-icon>mdi-checkbox-blank-outline</v-icon>
+            <v-icon>mdi-close</v-icon>
+        </v-system-bar>
+        <v-card
+            v-if="$vuetify.breakpoint.xsOnly && !loggedIn"
+            class="d-flex"
+            flat
+            tile
+            color="grey-lighten-4"
+        >
+            <v-btn
+                class="px-2 py-6 text-center"
+                text
+                outlined
+                tile
+                width="50%"
+                color="indigo lighten-1"
+                :to="{ name: 'login' }"
+                >Login</v-btn
+            >
+            <v-btn
+                class="px-2 py-6 text-center"
+                text
+                outlined
+                tile
+                width="50%"
+                color="indigo lighten-1"
+                :to="{ name: 'signup' }"
+                >Sign Up</v-btn
+            >
+        </v-card>
+        <v-app-bar
+            v-if="$vuetify.breakpoint.smAndUp"
+            fixed
+            app
+            color="white"
+            elevate-on-scroll
+        >
             <v-toolbar-title>Real vue app</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn
                 v-for="(link, index) in links"
                 :key="index"
                 v-show="!link.requireAuth || loggedIn"
-                color="white"
                 text
                 rounded
                 class="my-2 mx-1"
@@ -18,7 +59,6 @@
             </v-btn>
             <template v-if="!loggedIn">
                 <v-btn
-                    color="white"
                     text
                     rounded
                     class="my-2 mx-1"
@@ -27,7 +67,6 @@
                     >Login</v-btn
                 >
                 <v-btn
-                    color="white"
                     text
                     rounded
                     class="my-2 mx-1"
@@ -45,54 +84,30 @@
                 Logout
             </v-btn>
         </v-app-bar>
-        <v-main class="grey lighten-4">
+        <v-main class="white">
             <router-view></router-view>
         </v-main>
         <v-footer color="primary lighten-1" padless>
-            <v-bottom-navigation v-model="bottomNav">
+            <v-bottom-navigation
+                v-if="loggedIn && $vuetify.breakpoint.xsOnly"
+                color="indigo lighten-2"
+                horizontal
+            >
                 <v-btn
-                    color="white"
-                    text
-                    rounded
-                    class="my-2 mx-1"
-                    :to="{ name: 'login' }"
+                    v-for="{ name, icon, label } of links"
+                    :key="name"
+                    :to="{ name }"
                     exact
-                    value="login"
-                    ><span>login</span> <v-icon>mdi-heart</v-icon></v-btn
                 >
-                <v-btn
-                    color="white"
-                    text
-                    rounded
-                    class="my-2 mx-1"
-                    :to="{ name: 'signup' }"
-                    exact
-                    value="signup"
-                >
-                    <span>Signup</span>
-                    <v-icon>mdi-history</v-icon>
-                </v-btn>
+                    <span>{{ label }}</span>
 
-                <v-btn
-                    v-for="(link, index) in links"
-                    :key="index"
-                    color="white"
-                    text
-                    rounded
-                    v-show="!link.requireAuth || loggedIn"
-                    :value="link.value"
-                    class="my-2"
-                    :to="{ name: link.name }"
-                    exact
-                >
-                    <span>{{ link.label }}</span>
-                    <v-icon>{{ link.icon }}</v-icon>
+                    <v-icon>{{ icon }}</v-icon>
                 </v-btn>
             </v-bottom-navigation>
             <v-layout justify-center wrap>
-                <v-flex primary lighten-2 py-4 text-center white--text xs12>
+                <v-flex primary lighten-2 py-2 text-center white--text xs12>
                     {{ new Date().getFullYear() }} —
-                    <strong>Vuetify Dashboard</strong>
+                    <strong>Lafarge Holcim</strong>
                 </v-flex>
             </v-layout>
         </v-footer>
@@ -119,7 +134,7 @@ export default {
                     name: 'dashboard',
                     requireAuth: true,
                     value: 'dashbord',
-                    icon: 'mdi-dashboard',
+                    icon: 'mdi-view-dashboard',
                 },
             ],
             bottomNav: '',

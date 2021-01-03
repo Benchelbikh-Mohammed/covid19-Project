@@ -12,6 +12,7 @@ new Vue({
     vuetify,
     render: h => h(App),
     created() {
+        console.log(process.env);
         const userString = localStorage.getItem('user');
         if (userString) {
             const userData = JSON.parse(userString);

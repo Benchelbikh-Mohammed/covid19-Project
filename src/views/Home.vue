@@ -2,11 +2,11 @@
     <v-container>
         <v-row>
             <v-col
-                cols="12"
+                v-for="(event, index) in event.events"
+                :key="event.id"
+                :cols="!(index % 3) ? 12 : 6"
                 sm="6"
                 md="4"
-                v-for="event in event.events"
-                :key="event.id"
             >
                 <Card :url="randomImage" :event="event" />
             </v-col>
