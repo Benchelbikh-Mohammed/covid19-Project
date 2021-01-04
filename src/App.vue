@@ -43,7 +43,7 @@
             color="white"
             elevate-on-scroll
         >
-            <v-toolbar-title>Real vue app</v-toolbar-title>
+            <v-toolbar-title>Covid tracker</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn
                 v-for="(link, index) in links"
@@ -107,7 +107,7 @@
             <v-layout justify-center wrap>
                 <v-flex primary lighten-2 py-2 text-center white--text xs12>
                     {{ new Date().getFullYear() }} —
-                    <strong>Lafarge Holcim</strong>
+                    <strong>Benchelbikh Mohammed</strong>
                 </v-flex>
             </v-layout>
         </v-footer>
