@@ -28,6 +28,12 @@ const routes = [
         name: 'signup',
         component: () => import('../views/Signup.vue'),
     },
+
+    {
+        path: '/map',
+        name: 'map',
+        component: () => import('../views/Map.vue'),
+    },
     {
         path: '/network-issue',
         name: 'network-issue',
