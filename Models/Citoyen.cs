@@ -31,6 +31,7 @@ namespace API.Models
         public bool isVaccinated { get; set; }
         public bool inQuarantine { get; set; }
         public bool isSuspect { get; set; }
+        public string type { get; set; }
 
         public string CheckType()
         {
