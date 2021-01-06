@@ -14,6 +14,9 @@ using GeoJSON.Net.Feature;
 using GeoJSON.Net.Geometry;
 
 using Newtonsoft.Json;
+using API.Controllers.Helper;
+using System.Reflection;
+using API.Models;
 
 namespace API.Controllers
 {
@@ -21,6 +24,7 @@ namespace API.Controllers
     [ApiController]
     public class locationController : ControllerBase
     {
+
         private readonly IConfiguration _configuration;
 
         public locationController(IConfiguration configuration)
@@ -32,30 +36,43 @@ namespace API.Controllers
         public string Get()
         {
             string cnxS = _configuration.GetConnectionString("CitoyenAppCon");
-            var points = new List<Point>();
+            List<Location> list = new List<Location>();
             using (SqlConnection cnx = new SqlConnection(cnxS))
             {
                 string request = "Select * from locations";
                 cnx.Open();
-
+                
                 using (SqlCommand cmd = new SqlCommand(request, cnx))
                 {
-                    SqlDataReader rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        Position position = new Position(Convert.ToDouble(rdr["latitude"]), Convert.ToDouble(rdr["longitude"]));
-                        points.Add(new Point(position));
-                    }
+                    
 
-                    rdr.Close();
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+
+                        while (rdr.Read())
+                        {
+                            string icon = Convert.ToBoolean(rdr["estUnfoyerdecontamination"]) ? @"https://res.cloudinary.com/db4y2bix8/image/upload/v1609864090/1200px-Red_dot.svg_ndwx4r.png" : @"https://res.cloudinary.com/db4y2bix8/image/upload/v1609865441/Green_Point_vjfeks.gif";
+                            list.Add(new Location(Convert.ToString(rdr["adresse"]),
+                                Convert.ToDouble(rdr["latitude"]),
+                                Convert.ToDouble(rdr["longitude"]),
+                                icon));
+
+                        }
+                    }
                     cnx.Close();
                 }
             }
-            var multiPoint = new MultiPoint(points);
 
-            var geojson = JsonConvert.SerializeObject(multiPoint);
+            var envelope = new
+            {
+                type = "FeatureCollection",
+                features = list
+            };
 
-            return geojson;
+
+            string geo_json = JsonConvert.SerializeObject(envelope);
+
+            return geo_json;
         }
 
     }
