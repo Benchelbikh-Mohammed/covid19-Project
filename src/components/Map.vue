@@ -34,6 +34,16 @@ export default {
         eventBus.$on('newTextAddress', payload => {
             this.updateFromTextAddress(payload);
         });
+
+        // eventBus.$on('addLocation', async adresse => {
+        //     const res = await axios.post('http://localhost:5000/api/location', {
+        //         lat: this.lastLat,
+        //         lng: this.lastLnga,
+        //         adresse,
+        //     });
+
+        //     console.log(res.data);
+        // });
     },
 
     methods: {
@@ -208,6 +218,8 @@ export default {
         updateFromTextAddress(payload) {
             this.map.setCenter(payload.geometry.location);
             this.updateMarker(payload.geometry.location);
+
+            eventBus.$emit('mapAddress', payload);
         },
     },
 };

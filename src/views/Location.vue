@@ -1,13 +1,47 @@
 <template>
     <v-container fluid>
-        <v-row justify="space-around">
+        <v-row justify="space-between" align="center">
             <v-col cols="12" md="6">
                 <v-text-field
                     id="input"
                     v-model="location.adresse"
                     label="Entrer une location"
                     required
+                    messages="make sure to select a location from the map"
                 ></v-text-field>
+            </v-col>
+
+            <v-col>
+                <v-dialog v-model="dialog" persistent max-width="290">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                            add Location
+                        </v-btn>
+                    </template>
+                    <v-card>
+                        <v-card-title class="headline">
+                            vous avez ete dans cette location ?
+                        </v-card-title>
+                        >
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn
+                                color="green darken-1"
+                                text
+                                @click="addLocationToDb"
+                            >
+                                oui
+                            </v-btn>
+                            <v-btn
+                                color="green darken-1"
+                                text
+                                @click="dialog = false"
+                            >
+                                non
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
             </v-col>
         </v-row>
 
@@ -30,6 +64,8 @@ export default {
             adresse: '',
             cityState: '',
         },
+
+        dialog: false,
     }),
 
     mounted() {
@@ -93,6 +129,12 @@ export default {
             // just the first two characters...
             state = addressParts[1].trim().substring(0, 2);
             return `${city},${state}`;
+        },
+
+        addLocationToDb() {
+            eventBus.$emit('addLocation', this.location.adresse);
+
+            this.dialog = false;
         },
     },
 };
