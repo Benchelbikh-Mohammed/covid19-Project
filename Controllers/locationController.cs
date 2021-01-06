@@ -75,5 +75,29 @@ namespace API.Controllers
             return geo_json;
         }
 
+        [HttpPost]
+        public JsonResult Post(LocationPost location)
+        {
+            string cnxS = _configuration.GetConnectionString("CitoyenAppCon");
+
+            using (var cnx = new SqlConnection(cnxS))
+            {
+                cnx.Open();
+                using (var command = new SqlCommand("Books_Insert", cnx)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+
+                    command.Parameters.Add(new SqlParameter("@latitude", location.latitude));
+                    command.Parameters.Add(new SqlParameter("@longitude", location.longitude));
+                    command.Parameters.Add(new SqlParameter("@adresse", location.adresse));
+                    command.ExecuteNonQuery();
+                }
+
+            }
+            return new JsonResult("Added Succesfully");
+        }
+
     }
 }
