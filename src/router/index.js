@@ -32,7 +32,7 @@ const routes = [
     {
         path: '/map',
         name: 'map',
-        component: () => import('../views/Map.vue'),
+        component: () => import('../views/Location.vue'),
     },
     {
         path: '/network-issue',
