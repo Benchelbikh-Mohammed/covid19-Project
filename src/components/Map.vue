@@ -34,16 +34,6 @@ export default {
         eventBus.$on('newTextAddress', payload => {
             this.updateFromTextAddress(payload);
         });
-
-        // eventBus.$on('addLocation', async adresse => {
-        //     const res = await axios.post('http://localhost:5000/api/location', {
-        //         lat: this.lastLat,
-        //         lng: this.lastLnga,
-        //         adresse,
-        //     });
-
-        //     console.log(res.data);
-        // });
     },
 
     methods: {
@@ -57,7 +47,7 @@ export default {
                     this.DEFAULT_LAT,
                     this.DEFAULT_LNG,
                 ),
-                zoom: 10,
+                zoom: 7,
                 styles: [
                     {
                         elementType: 'geometry',
@@ -165,6 +155,11 @@ export default {
                         eventBus.$emit('mapAddress', results);
                     }
                 });
+
+                this.$store.dispatch('setLatLng', {
+                    lat: this.lastLat,
+                    lng: this.lastLng,
+                });
             });
 
             // this.map.data.loadGeoJson('https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_populated_places.geojson')
@@ -198,6 +193,7 @@ export default {
             };
 
             apiCall();
+            console.log('init called');
 
             // now we can init other things that depend on Google being loaded
             // tell the event bus

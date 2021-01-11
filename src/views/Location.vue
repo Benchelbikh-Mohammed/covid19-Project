@@ -45,13 +45,28 @@
             </v-col>
         </v-row>
 
-        <Map />
+        <Map :adresse="location.adresse" />
+        <v-snackbar v-model="snackbar">
+            location added successfully
+
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                    color="pink"
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                >
+                    Close
+                </v-btn>
+            </template>
+        </v-snackbar>
     </v-container>
 </template>
 
 <script>
 import Map from '@/components/Map.vue';
 import eventBus from '@/event-bus.js';
+import axios from 'axios';
 
 export default {
     name: 'Location',
@@ -64,7 +79,7 @@ export default {
             adresse: '',
             cityState: '',
         },
-
+        snackbar: false,
         dialog: false,
     }),
 
@@ -132,7 +147,30 @@ export default {
         },
 
         addLocationToDb() {
-            eventBus.$emit('addLocation', this.location.adresse);
+            const apiPost = async () => {
+                try {
+                    const latitude = this.$store.state.map.lastLat;
+                    const longitude = this.$store.state.map.lastLng;
+
+                    if (latitude && longitude) {
+                        return axios
+                            .post('http://localhost:5000/api/location', {
+                                latitude,
+                                longitude,
+                                adresse: this.location.adresse,
+                            })
+                            .then(() => {
+                                this.snackbar = true;
+                            });
+                    }
+
+                    return null;
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+            const res = apiPost();
+            console.log(res);
 
             this.dialog = false;
         },
