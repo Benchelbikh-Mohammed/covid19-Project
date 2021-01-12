@@ -6,13 +6,14 @@
             :color="item.color"
             :icon="item.icon"
             fill-dot
+            small
         >
             <v-card :color="item.color" dark>
-                <v-card-title class="title pt-3 pb-3">
+                <v-card-title class="title pt-2 pb-2">
                     <h3 class="title">{{ item.title }}</h3>
                 </v-card-title>
                 <v-card-text class="white text--primary">
-                    <p class="pt-3 body-1 mb-0">
+                    <p class="pt-3 body-2 mb-0">
                         {{ item.text }}
                     </p>
                 </v-card-text>

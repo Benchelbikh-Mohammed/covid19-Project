@@ -1,13 +1,5 @@
 <template>
     <v-app>
-        <v-system-bar window>
-            <v-icon>mdi-message</v-icon>
-            <span>10 unread messages</span>
-            <v-spacer></v-spacer>
-            <v-icon>mdi-minus</v-icon>
-            <v-icon>mdi-checkbox-blank-outline</v-icon>
-            <v-icon>mdi-close</v-icon>
-        </v-system-bar>
         <v-card
             v-if="$vuetify.breakpoint.xsOnly && !loggedIn"
             class="d-flex"
@@ -58,21 +50,21 @@
                 {{ link.label }}
             </v-btn>
             <template v-if="!loggedIn">
-                <v-btn
+                <!-- <v-btn
                     text
                     rounded
                     class="my-2 mx-1"
                     :to="{ name: 'login' }"
                     exact
                     >Login</v-btn
-                >
+                > -->
                 <v-btn
                     text
                     rounded
                     class="my-2 mx-1"
                     :to="{ name: 'signup' }"
                     exact
-                    >Signup</v-btn
+                    >Register new citizen</v-btn
                 >
             </template>
             <v-btn

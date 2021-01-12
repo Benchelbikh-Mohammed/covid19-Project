@@ -1,7 +1,7 @@
 <template>
     <v-container class="grey lighten-4">
         <h1>Dashboard</h1>
-        <v-row align="stretch">
+        <!-- <v-row align="stretch">
             <v-col
                 v-for="sale in sales"
                 :key="`${sale.title}`"
@@ -10,9 +10,9 @@
             >
                 <SalesGraph :sale="sale" />
             </v-col>
-        </v-row>
+        </v-row> -->
 
-        <v-row>
+        <!-- <v-row>
             <v-col
                 v-for="statistic in statistics"
                 :key="`${statistic.title}`"
@@ -22,7 +22,7 @@
             >
                 <StatisticCard :statistic="statistic" />
             </v-col>
-        </v-row>
+        </v-row> -->
 
         <v-row>
             <v-col cols="12" md="8">
@@ -49,8 +49,8 @@
 <script>
 import EmployeesTable from '../components/EmployeesTable';
 import EventTimeline from '../components/EventTimeline';
-import SalesGraph from '../components/SalesGraph';
-import StatisticCard from '../components/StatisticCard';
+// import SalesGraph from '../components/SalesGraph';
+// import StatisticCard from '../components/StatisticCard';
 import employeesData from '../data/employees.json';
 import timelineData from '../data/timeline.json';
 import salesData from '../data/sales.json';
@@ -61,8 +61,8 @@ export default {
     components: {
         EmployeesTable,
         EventTimeline,
-        SalesGraph,
-        StatisticCard,
+        // SalesGraph,
+        // StatisticCard,
     },
     data() {
         return {

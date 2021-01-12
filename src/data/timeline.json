@@ -2,25 +2,56 @@
     {
         "color": "red lighten-2",
         "icon": "mdi-star",
-        "title": "Promoted to Assistant Regional Manager",
-        "text": "Congratulations to Dwayne on your promotion! Sensei is proud!"
+        "title": "Janvier 2020",
+        "text": "début d’épidémie Chine. Retrospectivement très faible nombre morts par million"
     },
     {
         "color": "purple darken-1",
         "icon": "mdi-ring",
-        "title": "PB & J Finally Together!",
-        "text": "Max Scarn here with a personal congratulations to the happy couple!"
+        "title": "Mars",
+        "text": "progression importante en Europe (ordre : Italie, Espagne, France et Belgique, UK, Pays-Bas,…)"
     },
     {
         "color": "green lighten-1",
         "icon": "mdi-balloon",
-        "title": "Welcome Back to the Temp!",
-        "text": "Sorry about what happened at corporate, but I am glad you are back! - Max"
+        "title": "Avril",
+        "text": "développement extrêmement rapide aux Etats-Unis"
     },
     {
         "color": "indigo",
         "icon": "mdi-gift",
-        "title": "Reminder: Secret Santa Rules",
-        "text": "The maximum spending amount is $20. No iPods allowed."
+        "title": "Mai",
+        "text": "baisse dans les pays “développés” en mai"
+    },
+    {
+        "color": "purple darken-1",
+        "icon": "mdi-ring",
+        "title": "Juin",
+        "text": " l’Amérique Latine prend le relai"
+    },
+    {
+        "color": "red lighten-2",
+        "icon": "mdi-star",
+        "title": "Fin Juin",
+        "text": "nombre de morts remonte fortement aux US"
+    },
+      {
+        "color": "indigo",
+        "icon": "mdi-gift",
+        "title": "Juillet",
+        "text": "toute l’Amérique rougeoie du Nord au Sud (à l’exception notable du Canada)"
+    },
+    {
+        "color": "green lighten-1",
+        "icon": "mdi-balloon",
+        "title": "Septembre",
+        "text": "rebond en Europe, notamment en France"
+    },
+    {
+        "color": "purple darken-1",
+        "icon": "mdi-ring",
+        "title": "Octobre",
+        "text": " l’Europe redevient la région la plus touchée, avec notamment l’Europe centrale"
     }
+
 ]

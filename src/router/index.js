@@ -20,7 +20,6 @@ const routes = [
         path: '/dashboard',
         name: 'dashboard',
         component: () => import('../views/Dashboard.vue'),
-        meta: { requireAuth: true },
     },
 
     {
@@ -34,6 +33,7 @@ const routes = [
         name: 'map',
         component: () => import('../views/Location.vue'),
     },
+
     {
         path: '/network-issue',
         name: 'network-issue',

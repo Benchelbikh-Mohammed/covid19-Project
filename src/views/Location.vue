@@ -45,7 +45,7 @@
             </v-col>
         </v-row>
 
-        <Map :adresse="location.adresse" />
+        <Map />
         <v-snackbar v-model="snackbar">
             location added successfully
 
