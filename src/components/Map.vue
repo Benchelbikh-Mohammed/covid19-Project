@@ -175,25 +175,22 @@ export default {
                 for (var i = 0; i < markerCollection.length; i++) {
                     var feature = markerCollection[i];
                     if (feature.getProperty('icon')) {
-                        this.map.data.setStyle(function(feature) {
-                            return {
-                                icon: {
-                                    url: feature.getProperty('icon'),
-                                    // this marker is 765.9 pixels wide by 666 pixels high.
-                                    // eslint-disable-next-line no-undef
-                                    scaledSize: new google.maps.Size(14, 12),
-                                    // The anchor for this image is the base (0, 12).
-                                    // eslint-disable-next-line no-undef
-                                    anchor: new google.maps.Point(7, 12),
-                                },
-                            };
-                        });
+                        this.map.data.setStyle(feature => ({
+                            icon: {
+                                url: feature.getProperty('icon'),
+                                // this marker is 765.9 pixels wide by 666 pixels high.
+                                // eslint-disable-next-line no-undef
+                                scaledSize: new google.maps.Size(14, 12),
+                                // The anchor for this image is the base (0, 12).
+                                // eslint-disable-next-line no-undef
+                                anchor: new google.maps.Point(7, 12),
+                            },
+                        }));
                     }
                 }
             };
 
             apiCall();
-            console.log('init called');
 
             // now we can init other things that depend on Google being loaded
             // tell the event bus
