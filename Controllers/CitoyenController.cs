@@ -41,9 +41,10 @@ namespace API.Controllers
                     cnx.Close();
                 }
             }
-
+            
             return new JsonResult(table);
         }
+
 
         [HttpPost]
         public JsonResult Post(Citoyen citoyen)
@@ -82,8 +83,6 @@ namespace API.Controllers
                 {
 
                     command.Parameters.Add(new SqlParameter("@cin", citoyen.cin));
-                    command.Parameters.Add(new SqlParameter("@isVaccinated", citoyen.isVaccinated));
-                    command.Parameters.Add(new SqlParameter("@inQuarantine", citoyen.inQuarantine));
                     command.Parameters.Add(new SqlParameter("@isSuspect", citoyen.isSuspect));
                     command.Parameters.Add(new SqlParameter("@type", citoyen.type));
                     command.ExecuteNonQuery();

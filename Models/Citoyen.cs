@@ -28,8 +28,7 @@ namespace API.Models
                 return Color.green;
             }
         }        
-        public bool isVaccinated { get; set; }
-        public bool inQuarantine { get; set; }
+        
         public bool isSuspect { get; set; }
         public string type { get; set; }
 
@@ -59,8 +58,7 @@ namespace API.Models
                 graph.Add(cin, new List<Citoyen>());
                 this.cin = cin;
                 isSuspect = false;
-                isVaccinated = false;
-                inQuarantine = false;
+                
 
             }
             catch (ArgumentException)
@@ -78,8 +76,6 @@ namespace API.Models
             }
 
             cin = c.cin;
-            isVaccinated = c.isVaccinated;
-            inQuarantine = c.inQuarantine;
         }
         //public T Clone<T>() where T : Citoyen, new()
         //{
