@@ -1,18 +1,15 @@
 [
     {
-        "title": "Employees",
-        "value": "65"
+        "title": "infected",
+        "value": "91 734 304"
     },
     {
-        "title": "Ream Sold",
-        "value": "983,000"
+        "title": "recovered",
+        "value": "50 761 713"
     },
     {
-        "title": "Rating",
-        "value": "4.5"
-    },
-    {
-        "title": "Revenue",
-        "value": "$2.3M"
+        "title": "deaths",
+        "value": "1 965 398"
     }
+   
 ]

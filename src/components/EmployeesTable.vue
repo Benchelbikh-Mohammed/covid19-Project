@@ -1,12 +1,15 @@
 <template>
-    <v-data-table
-        :headers="headers"
-        :items="employees"
-        :items-per-page="5"
-        class="elevation-1"
-        @click:row="selectRow"
-        :multi-sort="true"
-    ></v-data-table>
+    <div>
+        <v-data-table
+            :headers="headers"
+            :items="employees"
+            :items-per-page="5"
+            class="elevation-1"
+            @click:row="selectRow"
+            :multi-sort="true"
+        >
+        </v-data-table>
+    </div>
 </template>
 
 <script>
@@ -17,22 +20,20 @@ export default {
             type: Array,
             required: true,
         },
+        selectedEmployee: {},
     },
     data: () => ({
         headers: [
-            { text: 'Employee ID', value: 'id' },
-            { text: 'Name', value: 'name' },
-            { text: 'Position Title', value: 'title' },
-            { text: 'Salary', value: 'salary' },
+            { text: 'Cin', value: 'cin' },
+            { text: 'nom', value: 'name' },
+            { text: 'prenom', value: 'prenom' },
+            { text: 'date de naissance', value: 'dateN' },
         ],
     }),
+
     methods: {
-        selectRow(event) {
-            const employee = {
-                name: event.name,
-                title: event.title,
-            };
-            this.$emit('select-employee', employee);
+        selectRow(item) {
+            this.$emit('select-employee', item);
         },
     },
 };
