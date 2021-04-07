@@ -1,7 +1,7 @@
 <template>
     <v-container class="grey lighten-4">
         <h1>Dashboard</h1>
-        <v-row align="stretch">
+        <!-- <v-row align="stretch">
             <v-col
                 v-for="sale in sales"
                 :key="`${sale.title}`"
@@ -21,18 +21,18 @@
             >
                 <StatisticCard :statistic="statistic" />
             </v-col>
-        </v-row>
+        </v-row> -->
 
         <v-row>
-            <v-col cols="12" md="8">
+            <v-col cols="12">
                 <EmployeesTable
                     :employees="employees"
                     @select-employee="setEmployee"
                 />
             </v-col>
-            <v-col cols="12" md="4">
+            <!-- <v-col cols="12" md="4">
                 <EventTimeline :timeline="timeline" />
-            </v-col>
+            </v-col> -->
         </v-row>
 
         <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
@@ -64,9 +64,9 @@
 
 <script>
 import EmployeesTable from '../components/EmployeesTable';
-import EventTimeline from '../components/EventTimeline';
-import SalesGraph from '../components/SalesGraph';
-import StatisticCard from '../components/StatisticCard';
+// import EventTimeline from '../components/EventTimeline';
+// import SalesGraph from '../components/SalesGraph';
+// import StatisticCard from '../components/StatisticCard';
 import timelineData from '../data/timeline.json';
 import salesData from '../data/sales.json';
 import statisticsData from '../data/statistics.json';
@@ -77,16 +77,16 @@ export default {
     name: 'DashboardPage',
     components: {
         EmployeesTable,
-        EventTimeline,
-        SalesGraph,
-        StatisticCard,
+        // EventTimeline,
+        // SalesGraph,
+        // StatisticCard,
         readOnlyUserInfos,
     },
 
     mounted() {
         const apiCall = async () => {
-            const cit = await axios.get('http://localhost:5000/api/citoyen');
-            const inf = await axios.get('http://localhost:5000/api/infected');
+            const cit = await axios.get('https://localhost:44347/api/citoyen');
+            const inf = await axios.get('https://localhost:44347/api/infected');
             this.employees = cit.data;
             this.infected = inf.data;
         };

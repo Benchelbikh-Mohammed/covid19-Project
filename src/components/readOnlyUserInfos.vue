@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-card tile>
+        <!-- <v-card tile>
             <v-img
                 height="250"
                 :src="
@@ -33,31 +33,29 @@
                     </v-col>
                 </v-row>
             </v-img>
-        </v-card>
+        </v-card> -->
         <v-row>
             <v-col cols="12" md="4">
-                <v-text-field
-                    :value="citoyen.cin"
-                    readonly
-                    label="Cin"
-                ></v-text-field>
+                <v-text-field :value="citoyen.cin" label="Cin"></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4">
                 <v-text-field
                     :value="citoyen.prenom"
-                    readonly
                     label="First name"
                 ></v-text-field>
             </v-col>
 
             <v-col cols="12" md="4">
                 <v-text-field
-                    readonly
                     :value="citoyen.name"
                     label="Last name"
                 ></v-text-field>
             </v-col>
+        </v-row>
+        <v-row>
+            <v-btn @click="modify()">modifier</v-btn>
+            <v-btn @click="sup()">supprimer</v-btn>
         </v-row>
     </v-container>
 </template>
@@ -76,6 +74,16 @@ export default {
     },
 
     data: () => ({}),
+
+    methods: {
+        modify() {
+            console.log('modified');
+        },
+
+        sup() {
+            console.log('supp');
+        },
+    },
 
     computed: {
         isInfected() {
